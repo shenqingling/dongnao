@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "0.0.1",
+  "description": "dongnao nodejs module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "http",
+    "nodejs"
+  ],
+  "author": "shenqingling",
+  "license": "MIT"
+}
