@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<!-- saved from url=(0368)http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD -->
+<html data-dir="ltr" style="direction: ltr;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>主页 | 动脑学院-论坛</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="content-type" content="text/html; charset=UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta property="og:site_name" content="动脑学院-论坛">
+	<meta name="keywords">
+	<meta name="msapplication-badge" content="frequency=30; polling-uri=http://localhost:4567/sitemap.xml">
+	<meta name="msapplication-square150x150logo">
+	<meta name="title" content="动脑学院-论坛">
+	<meta name="description">
+	<meta property="og:title" content="Index | 动脑学院-论坛">
+	<meta property="og:type" content="website">
+	<link rel="stylesheet" type="text/css" href="./lesson7_files/stylesheet.css">
+	
+	
+
+	<!--[if lt IE 9]>
+  		<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.3.0/es5-shim.min.js"></script>
+  		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+  		<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+  		<script>__lt_ie_9__ = 1;</script>
+	<![endif]-->
+
+	<script>
+		var RELATIVE_PATH = "";
+		var config = JSON.parse('{"relative_path":"","socketioTransports":["polling","websocket"],"websocketAddress":"","version":"0.6.1","siteTitle":"动脑学院-论坛","showSiteTitle":true,"postDelay":"10","minimumTitleLength":"3","maximumTitleLength":"255","minimumPostLength":"8","maximumPostLength":"32767","hasImageUploadPlugin":false,"maximumProfileImageSize":"256","minimumUsernameLength":"2","maximumUsernameLength":"16","minimumPasswordLength":"6","maximumSignatureLength":"255","useOutgoingLinksPage":false,"allowGuestSearching":false,"allowGuestHandles":false,"allowFileUploads":false,"allowTopicsThumbnail":false,"allowAccountDelete":true,"privateUserInfo":false,"usePagination":false,"disableSocialButtons":false,"disableChat":false,"maxReconnectionAttempts":5,"reconnectionDelay":200,"tagsPerTopic":5,"topicsPerPage":20,"postsPerPage":10,"maximumFileSize":"2048","theme:id":"nodebb-theme-lavender","defaultLang":"zh_CN","userLang":"zh_CN","loggedIn":true,"cache-buster":"stable-7-g176a215","script-buster":"d85c5fa7","css-buster":"77cb75d3","requireEmailConfirmation":false,"topicPostSort":"oldest_to_newest","categoryTopicSort":"newest_to_oldest","csrf_token":"udc4NCEX-GYzsIiRn828vxsEn73c1wiR7JAE","searchEnabled":false,"notificationSounds":false,"openOutgoingLinksInNewTab":false,"topicSearchEnabled":false}');
+		var app = {};
+		app.user = JSON.parse('{"username":"上海 - 沈庆玲","userslug":"上海-沈庆玲","picture":"https://secure.gravatar.com/avatar/fae9538146288d52e0949deabbb36954?size=128&default=identicon&rating=pg","status":"online","email:confirmed":false,"banned":"0","uid":"82","isAdmin":false}');
+	</script>
+	<script src="./lesson7_files/nodebb.min.js"></script>
+	<script>
+		require.config({
+			baseUrl: "/src/modules",
+			waitSeconds: 3,
+			urlArgs: "stable-7-g176a215",
+			paths: {
+				'forum': '../forum',
+				'vendor': '../../vendor'
+			}
+		});
+	</script>
+
+	
+	
+
+<link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link rel="stylesheet" href="./lesson7_files/railscasts.css"><link type="image/x-icon" rel="icon" href="data:image/png;base64,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"></head>
+
+<body>
+	<div class="navbar navbar-default navbar-fixed-top header" role="navigation" id="header-menu">
+		<div class="loading-bar reset" style="width: 0%; display: none;"></div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div>
+					<a href="http://101.200.129.112:4567/">
+						<img class="hide forum-logo" src="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD">
+					</a>
+										<a href="http://101.200.129.112:4567/">
+						<h1 class="navbar-brand forum-title">动脑学院-论坛</h1>
+					</a>
+
+					<div class="header-topic-title visible-xs">
+						<span></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="navbar-collapse collapse navbar-ex1-collapse">
+								<ul id="main-nav" class="nav navbar-nav pull-left">
+										<li>
+						<a href="http://101.200.129.112:4567/unread" title="" data-original-title="未读">
+							<i id="unread-count" class="fa fa-fw fa-inbox" data-content="0"></i><span class="visible-xs-inline"> 未读</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="http://101.200.129.112:4567/recent" title="" data-original-title="最新">
+							<i class="fa fa-fw fa-clock-o"></i><span class="visible-xs-inline"> 最新</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://101.200.129.112:4567/tags" title="" data-original-title="话题">
+							<i class="fa fa-fw fa-tags"></i><span class="visible-xs-inline"> 话题</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://101.200.129.112:4567/popular" title="" data-original-title="热门">
+							<i class="fa fa-fw fa-fire"></i><span class="visible-xs-inline"> 热门</span>
+						</a>
+					</li>
+					<li class="">
+												<a href="http://101.200.129.112:4567/users" title="" data-original-title="会员">
+							<i class="fa fa-fw fa-user"></i><span class="visible-xs-inline"> 会员</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://101.200.129.112:4567/groups" title="" data-original-title="Groups">
+							<i class="fa fa-fw fa-group"></i><span class="visible-xs-inline"> Groups</span>
+						</a>
+					</li>
+					
+					
+
+				</ul>
+
+								<ul id="logged-in-menu" class="nav navbar-nav navbar-right pull-right">
+					<li class="notifications dropdown text-center hidden-xs">
+						<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" title="" class="dropdown-toggle" data-toggle="dropdown" id="notif_dropdown" data-original-title="通知">
+							<i class="notification-icon fa fa-fw fa-bell-o" data-content="0"></i>
+						</a>
+						<ul id="notif-list" class="dropdown-menu" aria-labelledby="notif_dropdown">
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><i class="fa fa-refresh fa-spin"></i> 正在加载通知</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="visible-xs">
+						<a href="http://101.200.129.112:4567/notifications" title="" data-original-title="通知">
+							<i class="notification-icon fa fa-bell-o fa-fw" data-content="0"></i> 通知
+						</a>
+					</li>
+
+										<li class="chats dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" title="" id="chat_dropdown" data-original-title="聊天">
+							<i id="chat-count" class="fa fa-comment-o fa-fw" data-content="0"></i> <span class="visible-xs-inline">聊天</span>
+						</a>
+						<ul id="chat-list" class="dropdown-menu" aria-labelledby="chat_dropdown">
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><i class="fa fa-refresh fa-spin"></i> 正在加载聊天</a>
+							</li>
+						</ul>
+					</li>
+
+					<li id="user_label" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" id="user_dropdown" title="" data-original-title="设置">
+							<img id="user-header-picture" src="./lesson7_files/fae9538146288d52e0949deabbb36954">
+						</a>
+						<ul id="user-control-list" class="dropdown-menu" aria-labelledby="user_dropdown">
+							<li>
+								<a id="user-profile-link" href="http://101.200.129.112:4567/user/%E4%B8%8A%E6%B5%B7-%E6%B2%88%E5%BA%86%E7%8E%B2">
+									<i class="fa fa-fw fa-circle status online"></i> <span id="user-header-name">上海 - 沈庆玲</span>
+								</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="user-status" data-status="online">
+									<i class="fa fa-fw fa-circle status online"></i><span> 在线</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="user-status" data-status="away">
+									<i class="fa fa-fw fa-circle status away"></i><span> 离开</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="user-status" data-status="dnd">
+									<i class="fa fa-fw fa-circle status dnd"></i><span> 请勿打扰</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="user-status" data-status="offline">
+									<i class="fa fa-fw fa-circle status offline"></i><span> 隐身</span>
+								</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li id="logout-link">
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><i class="fa fa-fw fa-sign-out"></i><span> 退出</span></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+
+				<ul class="nav navbar-nav navbar-right pull-right">
+					<li>
+						<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" id="reconnect" class="active" title="" data-original-title="Connection to 动脑学院-论坛 has been lost, attempting to reconnect..."><i class="fa fa-spinner fa-spin"></i></a>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right pagination-block visible-lg visible-md">
+					<li class="dropdown">
+						<i class="fa fa-angle-double-up pointer fa-fw pagetop"></i>
+						<i class="fa fa-angle-up pointer fa-fw pageup"></i>
+
+						<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="dropdown-toggle" data-toggle="dropdown">
+							<span id="pagination">1 / 1</span>
+						</a>
+
+						<i class="fa fa-angle-down pointer fa-fw pagedown"></i>
+						<i class="fa fa-angle-double-down pointer fa-fw pagebottom"></i>
+
+						<div class="progress-container">
+							<div class="progress-bar" style="width: 100%;"></div>
+						</div>
+
+						<ul class="dropdown-menu" role="menu">
+  							<input type="text" class="form-control" id="indexInput" placeholder="输入索引">
+  						</ul>
+					</li>
+				</ul>
+
+				<div class="header-topic-title hidden-xs">
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid" id="content"><input type="hidden" template-variable="topic_id" value="30">
+<input type="hidden" template-variable="topic_slug" value="30/第七次课-mongoose应用与express配置-将爬虫采集的信息存入mongodb数据库-mongodb的增删改查-2017-01-12快来听直播">
+<input type="hidden" template-variable="category_id" value="1">
+<input type="hidden" template-variable="currentPage" value="1">
+<input type="hidden" template-variable="pageCount" value="1">
+<input type="hidden" template-variable="locked" template-type="boolean" value="false">
+<input type="hidden" template-variable="deleted" template-type="boolean" value="false">
+<input type="hidden" template-variable="pinned" template-type="boolean" value="false">
+<input type="hidden" template-variable="topic_name" value="第七次课《Mongoose应用与Express配置》将爬虫采集的信息存入Mongodb数据库，Mongodb的增删改查【2017.01.12快来听直播】">
+<input type="hidden" template-variable="postcount" value="1">
+<input type="hidden" template-variable="viewcount" value="85">
+
+<div class="topic">
+<ol class="breadcrumb">
+	<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<a href="http://101.200.129.112:4567/" itemprop="url">
+			<span itemprop="title">
+				主页
+				
+			</span>
+		</a>
+	</li>
+	<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<a href="http://101.200.129.112:4567/category/1/%E5%85%AC%E5%91%8A" itemprop="url">
+			<span itemprop="title">
+				公告
+				
+			</span>
+		</a>
+	</li>
+	<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" class="active">
+		
+			<span itemprop="title">
+				第七次课《Mongoose应用与Express配置》将爬虫采集的信息存入Mongodb数据库，Mongodb的增删改查【2017.01.12快来听直播】
+												<a target="_blank" href="http://101.200.129.112:4567/topic/30.rss"><i class="fa fa-rss-square"></i></a>
+			</span>
+		
+	</li>
+</ol>
+
+	<ul id="post-container" class="posts" data-tid="30">
+			<li class="post-row" data-pid="79" data-uid="1" data-username="Song" data-userslug="song" data-index="0" data-timestamp="1484211618717" data-votes="0" itemscope="" itemtype="http://schema.org/Comment">
+				<a id="post_anchor_0" name="0"></a>
+
+				<meta itemprop="datePublished" content="2017-01-12T09:00:18.717Z">
+				<meta itemprop="dateModified" content="2017-01-12T11:07:47.715Z">
+
+				<div class="topic-item">
+					<div class="topic-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="topic-profile-pic hidden-xs text-center">
+									<a href="http://101.200.129.112:4567/user/song">
+										<img src="./lesson7_files/b1c526b6f5a24ff84f74f83d2551ce3f" alt="Song" class="profile-image user-img" title="" data-original-title="Song">
+									</a>
+									<small class="username" title="Song"><a href="http://101.200.129.112:4567/user/song">Song</a></small>
+
+									
+
+									
+								</div>
+								<div class="topic-text">
+																		<h3 class="topic-title">
+										<p id="topic_title_79" class="topic-title" itemprop="name"><i class="fa fa-thumb-tack hide"></i> <i class="fa fa-lock hide"></i> 第七次课《Mongoose应用与Express配置》将爬虫采集的信息存入Mongodb数据库，Mongodb的增删改查【2017.01.12快来听直播】</p>
+										<hr>
+									</h3>
+									<div id="content_79" class="post-content" itemprop="text"><ul>
+<li>MongoDB的安装</li>
+<li>NoSQL Manager for MongoDB安装及破解</li>
+<li>将爬虫采集的信息存入Mongodb数据库</li>
+<li>Mongodb的增删改查</li>
+<li>Express文件服务</li>
+</ul>
+</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="topic-footer">
+						<div class="row">
+							<div class="">
+								<small class="pull-right">
+									<span>
+																				<i class="fa fa-circle status offline" title="离线"></i>
+										<span class="username-field" data-username="Song" data-uid="1">
+																						<strong><a href="http://101.200.129.112:4567/user/song" itemprop="author">Song</a></strong> 发布于 <span class="timeago" title="2017-01-12T09:00:18.717Z">24 天之前</span>
+										</span>
+									</span>
+
+																		<span>, <strong><a href="http://101.200.129.112:4567/user/song">Song</a></strong> 于 <span class="timeago" title="2017-01-12T11:07:47.715Z">24 天之前</span> 编辑了帖子</span>
+								</small>
+
+								<div class="dropdown share-dropdown">
+									<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="dropdown-toggle postMenu favourite-tooltip" id="postMenu_79" data-toggle="dropdown">
+										<i class="fa fa-heart"></i>
+									</a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="postMenu_79">
+										<li role="presentation">
+																																	<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" role="menuitem" tabindex="-1" class="follow" title="此主题有新回复时通知我"><span>监视</span> <i class="fa fa-eye"></i></a>
+										</li>
+										<li role="presentation">
+											<a role="menuitem" tabindex="-1" data-favourited="false" class="favourite">
+												<span class="favourite-text">收藏</span>
+												<span class="favouriteCount" data-favourites="0">0</span>&nbsp;
+																								<i class="fa fa-heart-o"></i>
+											</a>
+										</li>
+																				<li role="presentation" class="divider"></li>
+										<li role="presentation" class="dropdown-header">分享此帖</li>
+										<li role="presentation">
+											<a role="menuitem" class="facebook-share" tabindex="-1" href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><span class="menu-icon"><i class="fa fa-facebook"></i></span> Facebook</a>
+										</li>
+										<li role="presentation">
+											<a role="menuitem" class="twitter-share" tabindex="-1" href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><span class="menu-icon"><i class="fa fa-twitter"></i></span> Twitter</a>
+										</li>
+										<li role="presentation">
+											<a role="menuitem" class="google-share" tabindex="-1" href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#"><span class="menu-icon"><i class="fa fa-google-plus"></i></span> Google+</a>
+										</li>
+										<li class="text-center">
+											<input type="text" id="post_79_link" value="" class="form-control post-link inline-block">
+										</li>
+									</ul>
+								</div>
+																•
+								<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="upvote ">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+								<span class="votes" data-votes="0">0</span>
+																<a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="downvote ">
+									<i class="fa fa-chevron-down"></i>
+								</a>
+
+								
+								<span class="post-tools">
+																																													<button class="btn btn-sm btn-link chat" type="button" title="聊天"><i class="fa fa-comment"></i><span class="hidden-xs-inline"> 聊天</span></button>
+																		<button class="btn btn-sm btn-link quote" type="button" title="引用"><i class="fa fa-quote-left"></i><span class="hidden-xs-inline"> 引用</span></button>
+									<button class="btn btn-sm btn-link post_reply" type="button"><i class="fa fa-reply"></i><span class="hidden-xs-inline"> 回复</span></button>
+																											<button class="btn btn-sm btn-link flag" type="button" title="对此帖设置管理标志"><i class="fa fa-flag-o"></i><span class="hidden-xs-inline"> 标记</span></button>
+									
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+						<li class="post-bar" data-index="0">
+<div class="inline-block">
+
+	<span class="tags">
+	<a href="http://101.200.129.112:4567/tags/mongoose"><span class="tag-item" data-tag="mongoose" style="">mongoose</span><span class="tag-topic-count">1</span></a>
+	<a href="http://101.200.129.112:4567/tags/curd"><span class="tag-item" data-tag="curd" style="">curd</span><span class="tag-topic-count">1</span></a>
+	<a href="http://101.200.129.112:4567/tags/2017.01.12"><span class="tag-item" data-tag="2017.01.12" style="">2017.01.12</span><span class="tag-topic-count">1</span></a>
+	</span>
+
+		<span>|</span>
+
+	<small class="topic-stats">
+		<span>帖子</span>
+		<strong><span class="topic-post-count human-readable-number" title="1">1</span></strong> |
+		<span>浏览</span>
+		<strong><span class="human-readable-number" title="85">85</span></strong>
+	</small>
+	<span class="browsing-users hidden">
+		•
+		<small><span>正在浏览</span></small>
+		<div class="thread_active_users active-users inline-block"></div>
+		<small class="hidden"><i class="fa fa-users"></i> <span class="user-count"></span></small>
+	</span>
+</div>
+
+<div class="topic-main-buttons pull-right inline-block">
+	<div class="loading-indicator" done="0" style="display:none;">
+		<span class="hidden-xs-inline">正在加载更多帖子</span> <i class="fa fa-refresh fa-spin"></i>
+	</div>
+		<button class="btn btn-primary post_reply" type="button">回复</button>
+
+
+
+<div class="btn-group thread-sort dropup">
+	<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">排序 <span class="caret"></span></button>
+	<ul class="dropdown-menu pull-right">
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="oldest_to_newest" data-sort="oldest_to_newest"><i class="fa fa-fw fa-check"></i> 从旧到新</a></li>
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="newest_to_oldest" data-sort="newest_to_oldest"><i class="fa fa-fw"></i> 从新到旧</a></li>
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="most_votes" data-sort="most_votes"><i class="fa fa-fw"></i> 最多投票</a></li>
+	</ul>
+</div>
+
+
+
+
+</div>
+<div style="clear:both;"></div>
+			</li>
+	</ul>
+
+	<div class="post-bar col-xs-12 hide bottom-post-bar">
+<div class="inline-block">
+
+	<span class="tags">
+	<a href="http://101.200.129.112:4567/tags/mongoose"><span class="tag-item" data-tag="mongoose" style="">mongoose</span><span class="tag-topic-count">1</span></a>
+	<a href="http://101.200.129.112:4567/tags/curd"><span class="tag-item" data-tag="curd" style="">curd</span><span class="tag-topic-count">1</span></a>
+	<a href="http://101.200.129.112:4567/tags/2017.01.12"><span class="tag-item" data-tag="2017.01.12" style="">2017.01.12</span><span class="tag-topic-count">1</span></a>
+	</span>
+
+		<span>|</span>
+
+	<small class="topic-stats">
+		<span>帖子</span>
+		<strong><span class="topic-post-count human-readable-number" title="1">1</span></strong> |
+		<span>浏览</span>
+		<strong><span class="human-readable-number" title="85">85</span></strong>
+	</small>
+	<span class="browsing-users hidden">
+		•
+		<small><span>正在浏览</span></small>
+		<div class="thread_active_users active-users inline-block"></div>
+		<small class="hidden"><i class="fa fa-users"></i> <span class="user-count"></span></small>
+	</span>
+</div>
+
+<div class="topic-main-buttons pull-right inline-block">
+	<div class="loading-indicator" done="0" style="display:none;">
+		<span class="hidden-xs-inline">正在加载更多帖子</span> <i class="fa fa-refresh fa-spin"></i>
+	</div>
+		<button class="btn btn-primary post_reply" type="button">回复</button>
+
+
+
+<div class="btn-group thread-sort dropup">
+	<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">排序 <span class="caret"></span></button>
+	<ul class="dropdown-menu pull-right">
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="oldest_to_newest" data-sort="oldest_to_newest"><i class="fa fa-fw fa-check"></i> 从旧到新</a></li>
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="newest_to_oldest" data-sort="newest_to_oldest"><i class="fa fa-fw"></i> 从新到旧</a></li>
+		<li><a href="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD#" class="most_votes" data-sort="most_votes"><i class="fa fa-fw"></i> 最多投票</a></li>
+	</ul>
+</div>
+
+
+
+
+</div>
+<div style="clear:both;"></div>
+	</div>
+
+	
+
+<div id="move_thread_modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="Move Topic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>移动主题</h3>
+			</div>
+			<div class="modal-body">
+				<p id="categories-loading"><i class="fa fa-spin fa-refresh"></i> 正在载入版面</p>
+				<p>
+					停用的版面为灰色
+				</p>
+				<div id="move-confirm" style="display: none;">
+					<hr>
+					<div class="alert alert-info">此主题将被移动到版块 <strong><span id="confirm-category-name"></span></strong></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="move_thread_cancel">关闭</button>
+				<button type="button" class="btn btn-primary" id="move_thread_commit" disabled="">移动</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="fork-thread-modal" class="hide" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4>分割主题</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input id="fork-title" type="text" class="form-control" placeholder="Enter new thread title"><br>
+					<label>点击将分割的帖子</label> <br>
+					<span id="fork-pids"></span>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="fork_thread_cancel">关闭</button>
+				<button type="button" class="btn btn-primary" id="fork_thread_commit" disabled="">分割</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="move-post-modal" class="hide" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-backdrop="none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4>移动帖子</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="topicId">Topic ID</label>
+					<input id="topicId" type="text" class="form-control" placeholder="Enter topic ID"><br>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="move_post_cancel">关闭</button>
+				<button type="button" class="btn btn-primary" id="move_post_commit" disabled="">移动</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<noscript>
+		&lt;div class="text-center"&gt;
+			&lt;ul class="pagination"&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	</noscript>
+<div class="row"><div widget-area="footer" class="col-xs-12"><footer id="footer" class="container footer">
+	<div class="copyright">
+		Copyright © 2016 <a target="_blank" href="http://dongnaoedu.com/">DongNaoEDU Forums</a> | <a target="_blank" href="http://dongnaoedu.com/">动脑学院</a>
+	</div>
+</footer></div></div></div><!--END container -->
+
+	<div id="upload-picture-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Upload Picture" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">上传头像</h3>
+				</div>
+				<div class="modal-body">
+					<form id="uploadForm" action="http://101.200.129.112:4567/topic/30/%E7%AC%AC%E4%B8%83%E6%AC%A1%E8%AF%BE-mongoose%E5%BA%94%E7%94%A8%E4%B8%8Eexpress%E9%85%8D%E7%BD%AE-%E5%B0%86%E7%88%AC%E8%99%AB%E9%87%87%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF%E5%AD%98%E5%85%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93-mongodb%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5-2017-01-12%E5%BF%AB%E6%9D%A5%E5%90%AC%E7%9B%B4%E6%92%AD" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="userPhoto">上传头像</label>
+							<input type="file" id="userPhotoInput" name="files[]">
+							<p class="help-block">您只能上传 PNG, JPG 或者 GIF 图片文件 <span id="file-size-block" class="hide"> (最大 <span id="upload-file-size"></span> kbs.)</span></p>
+						</div>
+						<input type="hidden" id="params" name="params">
+					</form>
+
+					<div id="upload-progress-box" class="progress progress-striped">
+						<div id="upload-progress-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0">
+							<span class="sr-only"> 成功</span>
+						</div>
+					</div>
+
+					<div id="alert-status" class="alert alert-info hide"></div>
+					<div id="alert-success" class="alert alert-success hide"></div>
+					<div id="alert-error" class="alert alert-danger hide"></div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button id="pictureUploadSubmitBtn" class="btn btn-primary">上传头像</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div class="topic-search hidden">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default count"></button>
+			<button type="button" class="btn btn-default prev" disabled="disabled"><i class="fa fa-fw fa-angle-up"></i></button>
+			<button type="button" class="btn btn-default next" disabled="disabled"><i class="fa fa-fw fa-angle-down"></i></button>
+		</div>
+	</div>
+	<div class="alert-window alert-left-top"></div>
+	<div class="alert-window alert-left-bottom"></div>
+	<div class="alert-window alert-right-top"></div>
+	<div class="alert-window alert-right-bottom"></div>
+
+	<script>
+		require(['forum/footer']);
+	</script>
+
+
+<div class="overlay-container" style="position: fixed; bottom: 20px; right: 20px; display: none;"><div class="panel resizer pointer"><div class="panel-body"><i class="fa fa-arrows-h fa-2x"></i></div></div></div><div id="taskbar" class="taskbar navbar navbar-default navbar-fixed-bottom">
+	<div class="navbar-inner"><ul class="nav navbar-nav pull-right"></ul></div>
+</div></body></html>
