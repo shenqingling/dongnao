@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>相册主页</title>
+    <!-- Bootstrap -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div style="margin:50px auto;width: 900px;">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="height: 40px;">
+                <div style="text-align: left">
+                    <span style="font-size:20px; font-weight:bold;">图片展示</span>
+                    <div style="float: right;">
+                        <a class="btn  btn-xs btn-success" href="upload" style="margin-right: 35px;">添加图片</a>
+                        <a class="btn btn-xs btn-info" href="logout">退 出</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="spys">
+                    <%for(var i in Pictures){ if(!Pictures[i].name)continue;%>
+                        <li class="spys li">
+                            <div>
+                                <img width="160" height="200" src="/images/<%=Pictures[i].imgSrc%>">
+                            </div>
+                            <div>
+                                <a>
+                                    <%=Pictures[i].name%>
+                                </a>
+                                <br>
+                                <strong style="color:red;">简介：<%=Pictures[i].description%></strong>
+                            </div>
+                        </li>
+                        <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript">
+function login() {
+    var username = $('#username').val(),
+        password = $('#password').val();
+    var data = {
+        "uname": username,
+        "upwd": password
+    };
+    $.ajax({
+        url: '/login',
+        type: 'POST',
+        data: data,
+        success: function(data, status) {
+            if (status == 'success') {
+                location.href = 'home';
+            }
+        },
+        error: function(data, status) {
+            if (status == "error") {
+                location.href = 'login'
+            }
+        }
+    });
+}
+</script>
+
+</html>
