@@ -1,0 +1,14 @@
+<%- include('header') %>
+    <h1><%= name.toUpperCase() %></h1>
+    <!-- http://localhost:8080/users/hahahah -->
+    <p>hello, <%= name %></p>
+    <!-- http://localhost:8080/users/<p>hahahah</p> -->
+    <p>hello, <%- name %></p>
+    <h3>提供的服务有：<h3>
+    <ul>
+    <%for(var s of servers){%>
+		<li><%- s%></li>
+	<%}%>
+    
+    </ul>
+<%- include('footer') %>

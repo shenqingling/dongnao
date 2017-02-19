@@ -11,9 +11,9 @@ app.use(session({
 }));
 
 var mongoose = require('mongoose');
+// global是nodejs的全局对象
 global.dbHelper = require('./dao/helper.js');
 global.db = mongoose.connect('mongodb://localhost:32768/album');
-// var User = global.dbHelper.getModel('User')
 
 // 解析POST请求的中间件
 var bodyParser = require('body-parser');
@@ -54,50 +54,6 @@ require('./routes/routes.js')(app);
 app.get('/', function(req, res) {
     res.render('login');
 });
-// app.get('/home', function(req, res) {
-//     res.render('home', { Pictures: [] });
-// });
-// app.get('/login', function(req, res) {
-//     res.render('login');
-// });
-
-// app.get('/register', function(req, res) {
-//     res.render('register');
-// });
-
-// app.post('/login', function(req, res) {
-//     User.findOne({ 'uname': req.body.uname, 'upwd': req.body.upwd }, function(err, user) {
-//         if (user) {
-//             console.log('success');
-//             req.session.user = user;
-//             res.send(200);
-//         } else {
-//             console.log('用户名或密码错误');
-//             req.session.error = '用户名或密码错误';
-//             res.send(404);
-//         }
-//     });
-// });
-
-// app.post('/register', function(req, res) {
-//     console.log(req.body);
-
-//     var user = new User();
-//     user.uname = req.body.uname;
-//     user.upwd = req.body.upwd;
-//     user.save(function(err) {
-//         if (err) {
-//             console.log(err);
-//             res.send(200);
-//         } else {
-//             console.log('new user id saved.');
-//             mongoose.disconnect();
-//             res.send(404);
-//         }
-//     });
-
-// });
-
 
 var server = app.listen(3000, function() {
     console.log('app listening on port 3000');
