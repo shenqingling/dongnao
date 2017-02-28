@@ -11,18 +11,18 @@ var Students = new Schema({
 mongoose.model('Student', Students);
 
 // 增加数据
-// var Student = mongoose.model('Student');
-// var student = new Student();
-// student.name = '醒梦';
-// student.sexy = 'female';
-// student.save(function(err) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log('Student is saved.');
-//         mongoose.disconnect();
-//     }
-// })
+var Student = mongoose.model('Student');
+var student = new Student();
+student.name = '醒梦';
+student.sexy = 'female';
+student.save(function(err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Student is saved.');
+        mongoose.disconnect();
+    }
+})
 
 // 查询数据
 // var Student = mongoose.model('Student');
@@ -43,8 +43,8 @@ mongoose.model('Student', Students);
 // });
 
 // 删除数据
-var Student = mongoose.model('Student');
-Student.findById('5894b64fe141bf259391bade', function(err, student) {
-    console.log(student);
-    student.remove();
-});
+// var Student = mongoose.model('Student');
+// Student.findById('5894b64fe141bf259391bade', function(err, student) {
+//     console.log(student);
+//     student.remove();
+// });

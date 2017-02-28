@@ -3,8 +3,7 @@ module.exports = function(app) {
         if (req.session.user) {
             var Picture = global.dbHelper.getModel('Picture')
             Picture.find({}, function(err, pictures) {
-                res.render('home', { Pictures: pictures });
-
+            res.render('home', { Pictures: pictures });
             })
         } else {
             req.session.error = '请先登录';

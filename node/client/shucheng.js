@@ -4,9 +4,9 @@
 
 // request模块封装了http模块，不是node自带的模块
 var request = require('request');
-var cheerio = require('cheerio');
+var cheerio = require('cheerio'); // nodejs中的jquery
 var fs = require('fs');
-var iconv = require('iconv-lite');
+var iconv = require('iconv-lite'); // 解决编码问题
 var mongoose = require('mongoose');
 
 // shucheng 是数据库的名字

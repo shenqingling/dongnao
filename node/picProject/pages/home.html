@@ -15,6 +15,14 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    .spys li {
+        display: inline-block;
+        width: 33%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    </style>
 </head>
 
 <body>
@@ -34,7 +42,8 @@
                     <%for(var i in Pictures){ if(!Pictures[i].name)continue;%>
                         <li class="spys li">
                             <div>
-                                <img width="160" height="200" src="/images/<%=Pictures[i].imgSrc%>">
+                                <!-- <img width="160" height="200" src="/images/<%=Pictures[i].imgSrc%>"> -->
+                                <img width="160" height="200" src="<%=Pictures[i].url%>">
                             </div>
                             <div>
                                 <a>

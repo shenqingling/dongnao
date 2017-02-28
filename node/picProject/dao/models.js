@@ -12,6 +12,6 @@ module.exports = {
     Picture: {
         name: String,
         description: String,
-        imgSrc: String
+        url: String
     }
 }
