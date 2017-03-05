@@ -16,12 +16,78 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<style>
+#holder {
+    border: 10px dashed #ccc;
+    width: 300px;
+    min-height: 300px;
+    margin: 20px auto;
+}
+
+#holder.hover {
+    border: 10px dashed #0c0;
+}
+
+#holder img {
+    display: block;
+    margin: 10px auto;
+}
+
+#holder p {
+    margin: 10px;
+    font-size: 14px;
+}
+
+progress {
+    width: 100%;
+}
+
+progress:after {
+    content: '%';
+}
+
+.fail {
+    background: #c00;
+    padding: 2px;
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
+</style>
 
 <body>
-    <div class="panel panel-default" style="width: 500px; margin: 100px auto">
-        <div class="panel-heading">upload</div>
+    <div class="panel panel-default" style="width: 900px; margin: 100px auto">
+        <div class="panel-heading" style="height: 40px;">
+            <div style="text-align: left">
+                <span style="font-size:20px; font-weight:bold;">图片描述：</span>
+                <input id="desc" type="text" style="border: 1px solid #ccc;" placeholder="桂林7日游">
+                <div style="float: right;">
+                    <a class="btn  btn-xs btn-success" onclick="upload()" style="margin-right: 35px;">点击上传</a>
+                </div>
+            </div>
+        </div>
         <div class="panel-body">
-            upload
+            <article>
+                <div id="holder" style="border: 10px dashed #ccc;width: 300px;min-height: 300px;margin: 20px auto;">
+                    <input type="text" placeholder="拖拽图片到此" style="font-size:30px; font-weight:bold; border: 0px;">
+                </div>
+                <!-- 客户端检测 -->
+                <p id="upload" class="hidden">
+                    <label>Drag &amp; drop not supported, but you can still upload via this input field:
+                        <br>
+                        <input type="file">
+                    </label>
+                </p>
+                <p id="filereader">File API &amp; FileReader API not supported</p>
+                <p id="formdata">XHR2's FormData is not supported</p>
+                <p id="progress">XHR2's upload progress isn't supported</p>
+                <!-- 显示进度条 -->
+                <p>Upload progress:
+                    <progress id="uploadprogress" min="0" max="100" value="0">100</progress>
+                </p>
+            </article>
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -29,5 +95,133 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
+<script>
+var fileItems = [];
+var holder = document.getElementById('holder'),
+    tests = {
+        filereader: typeof FileReader != 'undefined',
+        dnd: 'draggable' in document.createElement('span'),
+        formdata: !!window.FormData,
+        progress: "upload" in new XMLHttpRequest
+    },
+    support = {
+        filereader: document.getElementById('filereader'),
+        formdata: document.getElementById('formdata'),
+        progress: document.getElementById('progress')
+    },
+    acceptedTypes = {
+        'image/png': true,
+        'image/jpeg': true,
+        'image/gif': true
+    },
+    progress = document.getElementById('uploadprogress'),
+    fileupload = document.getElementById('upload');
+
+"filereader formdata progress".split(' ').forEach(function(api) {
+    if (tests[api] === false) {
+        support[api].className = 'fail';
+    } else {
+        // FFS. I could have done el.hidden = true, but IE doesn't support
+        // hidden, so I tried to create a polyfill that would extend the
+        // Element.prototype, but then IE10 doesn't even give me access
+        // to the Element object. Brilliant.
+        support[api].className = 'hidden';
+    }
+});
+
+function previewfile(file) {
+    // file= file[0];
+    if (tests.filereader === true && acceptedTypes[file.type] === true) {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var image = new Image();
+            image.src = event.target.result;
+            image.width = 250; // a fake resize
+            holder.appendChild(image);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.size ? (file.size / 1024 | 0) + 'K' : '');
+        console.log(file);
+    }
+}
+
+function readfiles(files) {
+    // debugger;
+    var formData = tests.formdata ? new FormData() : null;
+    for (var i = 0; i < files.length; i++) {
+        if (tests.formdata) formData.append('file', files[i]);
+        // previewfile(files[i]);
+    }
+
+    // now post a new XHR request
+    if (tests.formdata) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/upload');
+        xhr.onload = function() {
+            progress.value = progress.innerHTML = 100;
+            location.href = '/home';
+        };
+
+        if (tests.progress) {
+            xhr.upload.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    // 进度条
+                    var complete = (event.loaded / event.total * 100 | 0);
+                    progress.value = progress.innerHTML = complete;
+                }
+            }
+        }
+        var desc = document.getElementById('desc').value;
+        formData.append('desc', desc);
+        xhr.send(formData);
+    }
+}
+
+if (tests.dnd) {
+    holder.ondragover = function() {
+        // 边框颜色变化（绿色）
+        this.className = 'hover';
+        return false;
+    };
+    holder.ondragend = function() {
+        this.className = '';
+        return false;
+    };
+
+    // 鼠标释放事件
+    holder.ondrop = function(e) {
+        this.className = '';
+        // 阻止浏览器的默认行为（将图片拖拽到浏览器的时候，默认打开图片）
+        e.preventDefault();
+        // readfiles(e.dataTransfer.files);
+        fileItems = e.dataTransfer.files;
+        viewHolder(fileItems);
+    }
+} else {
+    fileupload.className = 'hidden';
+    fileupload.querySelector('input').onchange = function() {
+        // readfiles(this.files);
+        console.log(fileItems);
+        fileItems = this.files;
+        viewHolder(fileItems);
+    };
+}
+
+function viewHolder(files) {
+    // 清除先前的内容
+    while (holder.hasChildNodes()) {
+        holder.removeChild(holder.firstChild);
+    }
+    // 预览图片
+    for (var i = 0; i < files.length; i++) {
+        previewfile(files[i]);
+    }
+}
+
+function upload() {
+    readfiles(fileItems);
+}
+</script>
 
 </html>

@@ -21,7 +21,7 @@ var bodyParser = require('body-parser');
 // var multer = require('multer');
 
 // 配置静态目录
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'upload')));
 
 // 处理json数据
 app.use(bodyParser.json());
