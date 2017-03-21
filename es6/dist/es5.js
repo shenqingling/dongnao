@@ -12,7 +12,12 @@ console.log('hello world');
 document.body.innerText = 'hello';
 
 {
-	var _fruit = 'apple';
+	var fruit = 'apple';
 }
 
-console.log(fruit);
+// console.log(fruit);
+
+var breakfast = function breakfast(dessert) {
+	return dessert;
+};
+console.log(breakfast('milk'));
