@@ -54,3 +54,69 @@ let monday = {
 }
 console.log(monday.getDrink());
 console.log(monday);
+
+/*
+class的继承
+ */
+console.log(`============= class的继承 ===============`)
+class Person {
+    constructor(name, birthday) {
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    intro() {
+        console.log(this.name, this.birthday);
+    }
+}
+
+class Chef extends Person {
+    constructor(name, birthday) {
+        super(name, birthday);
+    }
+}
+
+let shen = new Chef('shenqingling', '1992-11-11');
+shen.intro();
+
+/*
+Iterator 遍历器
+ */
+console.log(`============= Iterator 遍历器 ===============`)
+    // 1. 自定义
+function chef(foods) {
+    let i = 0;
+    return {
+        next() {
+            let done = (i >= foods.length);
+            let value = !done ? foods[i++] : undefined;
+            return {
+                value,
+                done
+            }
+        }
+    }
+}
+
+shen = chef(['tomato', 'egg']);
+console.log(shen.next());
+console.log(shen.next());
+console.log(shen.next());
+
+console.log(`============= Generator ===============`)
+
+function* chef(foods) {
+    for (let i = 0; i < foods.length; i++) {
+        yield foods[i]
+    }
+}
+
+shen = chef(['tomato', 'egg']);
+console.log(shen.next());
+console.log(shen.next());
+console.log(shen.next());
+
+let shen1 = chef(['tomato1', 'egg1']);
+for (let v of shen1) {
+    console.log(v);
+}
