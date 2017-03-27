@@ -17,6 +17,44 @@ export default class TimeDisplay extends Component {
 
     timer = '';
 
+    componentDidMount(){
+    	this.keyCommands();
+    }
+
+    componentWillUnmount(){
+    	window.removeEvnetListener('keyup');
+    	window.removeEvnetListener('keydown');
+    }
+
+    // 案件？嵌入式开发
+    keyCommands = () => {
+    	window.addEventListener('keydown', e => e.preventDefault());
+    	window.addEventListener('keyup', e => {
+    		e.preventDefault();
+    		switch(e.keyCode){
+    			// Space
+    			case 32:
+	    			this.toggleOn();
+	    			break;
+	    		// R
+	    		case 82:
+	    			this.resetTime();
+	    			break;
+	    		// L
+	    		case 72:
+	    			this.logTime();
+	    			break;
+	    		// Enter
+	    		case 13:
+	    			this.clearTime();
+	    			break;
+	    		default:
+	    			return;
+    		}
+    	});
+
+    }
+
     logTime(newTime) {
         // this.state.log.push(this.state.time);
         // this.setState({
