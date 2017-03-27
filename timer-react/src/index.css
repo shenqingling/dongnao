@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*******************************************************************************
+ * 1-components
+ ******************************************************************************/
+
+body {
+    background: #f8f8f8;
+}
+
+.timer {
+    overflow: auto;
+}
+
+.display-time {
+    text-align: center;
+    font-size: 3em;
+    margin: 2em 0;
+}
+
+.controls {
+    margin: auto;
+    background: #eee;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+@keyframes growin {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.25);
+    }
+    95% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.log {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em;
+    max-height: calc(100vh - 315px);
+    overflow: auto;
+}
+
+.log .log-item {
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.log .log-item:hover {
+    background-color: rgba(238, 238, 238, 0.5);
+}
+
+.log .empty-log {
+    font-style: italic;
+    opacity: 0.25;
+    padding: 3em 0.5em;
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.button {
+    background-color: #e1e1e1;
+    border: 0;
+    border-radius: 0.25em;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 0.75em 1.5em;
+    margin: 10px;
+    min-width: 130px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0;
+    transition: 300ms ease-in-out box-shadow;
+}
+
+.button:focus {
+    outline: 0;
+}
+
+.button:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.button.primary {
+    background-color: skyblue;
+}
+
+.button.success {
+    background-color: lightgreen;
+}
+
+.button.warning {
+    background-color: gold;
+}
+
+.button.danger {
+    background-color: hotpink;
+}
