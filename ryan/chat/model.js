@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('dongnao_chat', 'root', '650198');
+const sequelize = new Sequelize('dongnao_chat', 'root', '');
 
 // sequelize demo
 /* var User = sequelize.define('user', {
