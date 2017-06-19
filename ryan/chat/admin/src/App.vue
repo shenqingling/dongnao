@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <el-row>
-      <el-col :md="4">
+      <el-col :md="3">
         <el-menu>
           <el-menu-item 
             v-for="route in $router.options.routes"
+            v-if="!route.hidden"
             :index="route.path"
             @click="onRouteChange(route.path)">
             {{route.name}}
@@ -12,7 +13,7 @@
         </el-menu>
       </el-col>
       <!-- <img src="./assets/logo.png"> -->
-      <el-col :md="20">
+      <el-col :md="19" :push="1">
         <router-view></router-view>
       </el-col>
     </el-row>

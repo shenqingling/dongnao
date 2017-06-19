@@ -6,23 +6,23 @@
       style="width: 100%">
       <el-table-column
         prop="id"
-        label="ID"
-        width="180">
+        label="ID" >
+        <template scope="scope">
+         <router-link :to="`/user/${scope.row.id}`">{{scope.row.username}}</router-link>
+          <!-- <el-button @click="$router.push('/user/scope.row.id')">{{scope.row.username}}</el-button> -->
+        </template>
       </el-table-column>
       <el-table-column
         prop="username"
-        label="用户ID"
-        width="180">
+        label="用户ID" >
       </el-table-column>
       <el-table-column
         prop="nickname"
-        label="用户昵称"
-        width="180">
+        label="用户昵称" >
       </el-table-column>
       <el-table-column
         prop="createdAt"
-        label="创建时间"
-        width="180">
+        label="创建时间" >
       </el-table-column>
     </el-table>
   </div>
@@ -50,24 +50,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
