@@ -1,9 +1,15 @@
 var express = require('express');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 var app = express();
 
 // 接口返回数据格式优化
 app.set('json spaces', 4);
+
+app.use(bodyParser({
+    urlencoded: false
+}));
+app.use(bodyParser.json());
 
 var user = require('./apps/user');
 var post = require('./apps/post');

@@ -1,4 +1,4 @@
-import {host} from '../config';
+import { host } from '../config';
 import request from 'superagent';
 
 export const get_all_user = function(cb) {

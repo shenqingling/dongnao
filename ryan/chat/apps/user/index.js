@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
 router.get('/:id/post', (req, res) => {
     connect.query('select * from posts where userId = ?;', {
         model: model.Post,
-        placements: [req.params.id]
+        replacements: [req.params.id]
     }).then(list => {
         res.send(list)
     })
@@ -54,7 +54,7 @@ router.get('/:id/friend', (req, res) => {
         OR 
         id IN (SELECT friendId FROM relations WHERE userId = ?);`, {
         model: model.User,
-        placements: [req.params.id]
+        replacements: [req.params.id, req.params.id]
     }).then(list => {
         res.send(list)
     })
@@ -66,9 +66,9 @@ router.get('/:id/detail', (req, res) => {
         .then(item => {
             connect.query('select * from posts where userId = ?;', {
                 model: model.Post,
-                placements: [req.params.id]
+                replacements: [req.params.id]
             }).then(list => {
-                item.dataValues.post = list;
+                item.dataValues.posts = list;
 
                 connect.query(`SELECT * 
                     FROM users 
@@ -77,13 +77,40 @@ router.get('/:id/detail', (req, res) => {
                     OR 
                     id IN (SELECT friendId FROM relations WHERE userId = ?);`, {
                     model: model.User,
-                    placements: [req.params.id]
+                    replacements: [req.params.id, req.params.id]
                 }).then(list => {
-                    item.dataValues.friend = list;
+                    item.dataValues.friends = list;
                     res.send(item);
                 })
             })
         });
+});
+
+// 用户添加新说说
+router.post('/:id/post', (req, res) => {
+    console.log(req.body);
+    model.Post.create({
+        userId: req.params.id,
+        // 需要配合使用中间件 bodyParser
+        title: req.body.title,
+        content: req.body.content
+    }).then((item) => {
+        console.log(item);
+        res.send(item);
+    })
+})
+
+// 用户添加新好友
+router.post('/:id/friend', (req, res) => {
+    connect.query(
+        `INSERT INTO 
+        relations (createdAt, updatedAt, userId, friendId) 
+        VALUES (NOW(), NOW(), ?, ?)`, {
+            model: model.Relation,
+            replacements: [req.params.id, req.body.friendId]
+        }).then(item => {
+        res.send(item)
+    })
 })
 
 module.exports = router;
