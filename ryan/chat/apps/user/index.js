@@ -1,7 +1,7 @@
 var model = require('../../config/model.js');
 const USER = model.User;
 const POST = model.Post;
-const Relation = model.Relation;
+const RELATION = model.Relation;
 const connect = model.connect;
 
 var express = require('express');
@@ -114,17 +114,28 @@ router.delete('/:id/post', (req, res) => {
 
 // 用户编辑说说
 router.put('/:id/post', (req, res) => {
-    console.log(req.body)
-    POST.update({
-        title: req.body.title,
-        content: req.body.content
-    }, {
-        where: {
-            id: req.body.postId
+    /* POST.update({
+         title: req.body.title,
+         content: req.body.content
+     }, {
+         where: {
+             id: req.body.postId
+         }
+     }).then(item => {
+         res.send(item);
+     })*/
+
+    POST.findById(req.body.postId).then(item => {
+        if (item) {
+            item.update({
+                title: req.body.title,
+                content: req.body.content
+            }).then(item => {
+                res.send(item);
+            })
         }
-    }).then(item => {
-        res.send(item);
     })
+
 })
 
 // 用户添加新好友
@@ -133,7 +144,6 @@ router.post('/:id/friend', (req, res) => {
         `INSERT INTO 
         relations (createdAt, updatedAt, userId, friendId) 
         VALUES (NOW(), NOW(), ?, ?)`, {
-            model: Relation,
             replacements: [req.params.id, req.body.friendId]
         }).then(item => {
         res.send(item)
@@ -143,17 +153,37 @@ router.post('/:id/friend', (req, res) => {
 // 用户移除好友
 router.delete('/:id/friend', (req, res) => {
     var friends = req.body.friendId.split(',');
-    Relation.destroy({
+    // 单个删除没问题
+    /*RELATION.findAll({
         where: {
             $or: [{
                 userId: req.params.id,
-                friendId: { $or: friends }
+                friendId: { $in: friends }
             }, {
-                userId: { $or: friends },
+                userId: { $in: friends },
+                friendId: req.params.id
+            }]
+        }
+    }).then(list => {
+        console.log(list);
+        list[0].destroy().then(item => {
+            res.send(item);
+        })
+    })*/
+
+    // 多个删除
+    RELATION.destroy({
+        where: {
+            $or: [{
+                userId: req.params.id,
+                friendId: { $in: friends }
+            }, {
+                userId: { $in: friends },
                 friendId: req.params.id
             }]
         }
     }).then(item => {
+        console.log(item)
         res.send(item);
     })
 })

@@ -46,7 +46,6 @@ export function addFriend(id, obj, cb) {
         .post(`${host}user/${id}/friend`)
         .send(obj)
         .end((err, res) => {
-        	console.log(err);
             cb(res.body)
         })
 }
@@ -57,7 +56,7 @@ export function removeFriend(id, obj, cb) {
         .delete(`${host}user/${id}/friend`)
         .send(obj)
         .end((err, res) => {
-            console.log(err);
+            console.log(res);
             cb(res.body)
         })
 }
