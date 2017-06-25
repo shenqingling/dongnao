@@ -1,5 +1,7 @@
 var model = require('../../config/model.js');
 const USER = model.User;
+const POST = model.Post;
+const Relation = model.Relation;
 const connect = model.connect;
 
 var express = require('express');
@@ -38,7 +40,7 @@ router.get('/:id', (req, res) => {
 // ? 占位符
 router.get('/:id/post', (req, res) => {
     connect.query('select * from posts where userId = ?;', {
-        model: model.Post,
+        model: POST,
         replacements: [req.params.id]
     }).then(list => {
         res.send(list)
@@ -65,7 +67,7 @@ router.get('/:id/detail', (req, res) => {
     USER.findById(req.params.id)
         .then(item => {
             connect.query('select * from posts where userId = ?;', {
-                model: model.Post,
+                model: POST,
                 replacements: [req.params.id]
             }).then(list => {
                 item.dataValues.posts = list;
@@ -88,14 +90,39 @@ router.get('/:id/detail', (req, res) => {
 
 // 用户添加新说说
 router.post('/:id/post', (req, res) => {
-    console.log(req.body);
-    model.Post.create({
+    POST.create({
         userId: req.params.id,
         // 需要配合使用中间件 bodyParser
         title: req.body.title,
         content: req.body.content
     }).then((item) => {
-        console.log(item);
+        res.send(item);
+    })
+})
+
+// 用户删除说说
+router.delete('/:id/post', (req, res) => {
+    var posts = req.body.postId.split(',');
+    POST.destroy({
+        where: {
+            id: { $or: posts }
+        }
+    }).then(item => {
+        res.send(item);
+    })
+})
+
+// 用户编辑说说
+router.put('/:id/post', (req, res) => {
+    console.log(req.body)
+    POST.update({
+        title: req.body.title,
+        content: req.body.content
+    }, {
+        where: {
+            id: req.body.postId
+        }
+    }).then(item => {
         res.send(item);
     })
 })
@@ -106,10 +133,28 @@ router.post('/:id/friend', (req, res) => {
         `INSERT INTO 
         relations (createdAt, updatedAt, userId, friendId) 
         VALUES (NOW(), NOW(), ?, ?)`, {
-            model: model.Relation,
+            model: Relation,
             replacements: [req.params.id, req.body.friendId]
         }).then(item => {
         res.send(item)
+    })
+})
+
+// 用户移除好友
+router.delete('/:id/friend', (req, res) => {
+    var friends = req.body.friendId.split(',');
+    Relation.destroy({
+        where: {
+            $or: [{
+                userId: req.params.id,
+                friendId: { $or: friends }
+            }, {
+                userId: { $or: friends },
+                friendId: req.params.id
+            }]
+        }
+    }).then(item => {
+        res.send(item);
     })
 })
 
