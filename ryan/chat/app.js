@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 var user = require('./apps/user');
 var post = require('./apps/post');
 var comment = require('./apps/comment');
+var message = require('./apps/message');
 
 app.get('/', (req, res) => {
     res.send('hello world');
@@ -25,5 +26,6 @@ app.use(cors());
 app.use('/user', user);
 app.use('/post', post);
 app.use('/comment', comment);
+app.use('/message', message);
 
 app.listen(3000)

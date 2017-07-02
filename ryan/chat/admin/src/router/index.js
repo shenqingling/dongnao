@@ -7,6 +7,8 @@ import User from '../components/User'
 import UserItem from '../components/User.item'
 // 说说列表
 import Post from '../components/Post'
+// 聊天信息
+import Message from '../components/Message'
 
 Vue.use(Router)
 
@@ -24,5 +26,10 @@ export default new Router({
         path: '/post',
         name: '说说',
         component: Post
+    }, {
+        path: '/message',
+        name: '聊天信息',
+        component: Message,
+        hidden: true
     }]
 })

@@ -1,7 +1,17 @@
 var account = require('./account.js');
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('dongnao_chat', account.username, account.password);
+const sequelize = new Sequelize('dongnao_chat', account.username, account.password,{
+    host: '103.36.173.200'
+});
+
+var r = require("redis"),
+    redis = r.createClient('6379','103.36.173.200');
+
+// 这里的列表是倒续的，后进先出
+// redis.lrange('sql_yangyang',0,10,(err,list)=>{
+//     console.log(list)
+// })
 
 // sequelize demo
 /*
@@ -91,5 +101,6 @@ module.exports = {
     Reply,
     Request,
     Relation,
-    connect: sequelize
+    connect: sequelize,
+    redis 
 }

@@ -65,6 +65,14 @@
             </el-table-column>
             <el-table-column prop="username" label="好友名字">
             </el-table-column>
+            <el-table-column prop="action" label="操作">
+                <template scope="scope">
+                    <el-button @click="showMessage(scope)" type="text" size="small">
+                        查看聊天记录
+                    </el-button>
+                    <!-- <router-link :to="`/message?from=${id}&to=${scope.row.id}`">查看聊天记录</router-link> -->
+                </template>
+            </el-table-column>
         </el-table>
     </div>
 </template>
@@ -225,6 +233,11 @@ export default {
                 return !!this.friends.find((user) => {
                     return user.id == id;
                 })
+            },
+            // 查看聊天记录
+            showMessage(scope){
+                let from = this.username, to = scope.row.username;
+                this.$router.push(`/message?from=${from}&to=${to}`);
             }
         },
         mounted() {
